@@ -21,6 +21,7 @@
   --blue:   #3b82f6;
   --cyan:   #06b6d4;
   --pink:   #ec4899;
+  --orange: #FF6B35;
 
   /* Phase accent colors */
   --phase1: #6C47FF; /* CS Foundations   – purple  */
@@ -483,6 +484,13 @@ pre .copy-btn:hover { color: var(--brand-purple-light); }
   from { transform: translateX(0);    opacity: 1; }
   to   { transform: translateX(110%); opacity: 0; }
 }
+/* toast--visible triggers entry; removing it triggers exit */
+.toast--visible {
+  animation: toast-in var(--duration-normal) var(--ease) forwards;
+}
+.toast:not(.toast--visible) {
+  animation: toast-out var(--duration-normal) var(--ease) forwards;
+}
 
 /* ---- ACHIEVEMENT POPUP ------------------------------------ */
 .achievement-popup {
@@ -526,6 +534,11 @@ pre .copy-btn:hover { color: var(--brand-purple-light); }
 
 /* Quick Check injection point */
 .qc-marker { margin: var(--sp-6) 0; }
+
+/* ---- ARTICLE SIDEBAR ------------------------------------- */
+.article-sidebar {
+  display: block;
+}
 
 /* ---- READING PROGRESS BAR -------------------------------- */
 .reading-progress {
@@ -668,4 +681,9 @@ pre .copy-btn:hover { color: var(--brand-purple-light); }
   }
 
   .toast { max-width: 100%; }
+
+  /* Hide article sidebar on mobile — user navigates via back link */
+  .article-sidebar {
+    display: none;
+  }
 }
