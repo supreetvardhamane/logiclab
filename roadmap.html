@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="LogicLab Learning Roadmap — See your full C++ learning path with locked, in-progress and completed modules.">
+  <title>LogicLab — Roadmap</title>
+
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/roadmap.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-cpp.min.js" defer></script>
+</head>
+<body>
+  <div class="page-shell">
+    <header id="navbar-slot"></header>
+
+    <main id="app" class="page-content page-content--wide" role="main" aria-live="polite">
+      <!-- Roadmap renders here -->
+    </main>
+
+    <footer style="padding:var(--sp-6) var(--sp-12);border-top:1px solid var(--border);
+                   text-align:center;color:var(--text-muted);font-size:var(--text-xs)">
+      LogicLab · Learn C++ the Scientific Way
+    </footer>
+  </div>
+
+  <div id="toast-container" class="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
+
+  <script type="module">
+    import { createRouter } from './js/router.js';
+    import { renderNavbar  } from './js/components/navbar.js';
+
+    document.getElementById('navbar-slot').appendChild(renderNavbar('roadmap'));
+
+    createRouter({
+      '/roadmap': () => import('./js/pages/roadmap.js'),
+    });
+  </script>
+</body>
+</html>

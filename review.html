@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="LogicLab Review Session — Spaced repetition flashcards powered by the SM-2 algorithm.">
+  <title>LogicLab — Review</title>
+
+  <link rel="stylesheet" href="css/main.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-cpp.min.js" defer></script>
+</head>
+<body>
+  <div class="page-shell">
+    <header id="navbar-slot"></header>
+
+    <!-- Session progress bar -->
+    <div id="review-progress-bar" class="progress-bar"
+         style="position:fixed;top:var(--navbar-h);left:0;right:0;border-radius:0;z-index:98;"
+         role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+      <div class="progress-bar__fill" id="review-progress-fill"
+           style="background:var(--green);width:0%;transition:width .3s ease"></div>
+    </div>
+
+    <main id="app" role="main" aria-live="polite"
+          style="display:flex;flex-direction:column;align-items:center;padding-top:var(--sp-10)">
+      <!-- Review card + self-rating buttons render here -->
+    </main>
+  </div>
+
+  <div id="toast-container" class="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
+
+  <script type="module">
+    import { createRouter } from './js/router.js';
+    import { renderNavbar  } from './js/components/navbar.js';
+
+    document.getElementById('navbar-slot').appendChild(renderNavbar('review'));
+
+    createRouter({
+      '/review': () => import('./js/pages/review.js'),
+    });
+  </script>
+</body>
+</html>

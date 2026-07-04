@@ -1,0 +1,8 @@
+.DS_Store
+*.log
+node_modules/
+.env
+
+# Reference material — not part of the deployable app
+_docs/
+_resources/

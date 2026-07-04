@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="LogicLab Code Challenge — LeetCode-style C++ coding problems with real code execution via Piston API.">
+  <title>LogicLab — Challenge</title>
+
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/editor.css">
+
+  <!-- Prism.js for problem description code blocks (lightweight) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-cpp.min.js" defer></script>
+  <!--
+    NOTE: CodeMirror 6 is NOT loaded here as a global script.
+    It is dynamically imported ONLY by js/editor.js when the challenge page mounts.
+    This keeps ALL other pages free of the ~50KB editor payload.
+  -->
+</head>
+<body>
+  <div class="page-shell" style="height:100vh;overflow:hidden">
+    <header id="navbar-slot"></header>
+
+    <!-- Full-height split layout: problem panel + editor panel -->
+    <main id="app" role="main" aria-live="polite"
+          style="flex:1;overflow:hidden;display:flex;flex-direction:column">
+      <!-- challenge.js renders the split layout here -->
+    </main>
+  </div>
+
+  <div id="toast-container" class="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
+
+  <script type="module">
+    import { createRouter } from './js/router.js';
+    import { renderNavbar  } from './js/components/navbar.js';
+
+    document.getElementById('navbar-slot').appendChild(renderNavbar(''));
+
+    createRouter({
+      '/challenge/:id':        () => import('./js/pages/challenge.js'),
+      '/challenge/:id/result': () => import('./js/pages/challenge.js'),
+    });
+  </script>
+</body>
+</html>

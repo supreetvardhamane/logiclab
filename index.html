@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="LogicLab — Learn C++ the scientific way. Gamified, spaced-repetition-powered C++ learning platform.">
+  <title>LogicLab — Dashboard</title>
+
+  <link rel="stylesheet" href="css/main.css">
+
+  <!-- Prism.js for syntax highlighting in articles -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-cpp.min.js" defer></script>
+</head>
+<body>
+  <div class="page-shell">
+    <header id="navbar-slot"></header>
+
+    <main id="app" role="main" aria-live="polite">
+      <!-- Router injects content here -->
+    </main>
+
+    <footer style="padding:var(--sp-6) var(--sp-12);border-top:1px solid var(--border);
+                   text-align:center;color:var(--text-muted);font-size:var(--text-xs)">
+      LogicLab · Learn C++ the Scientific Way
+    </footer>
+  </div>
+
+  <!-- Toast container (global) -->
+  <div id="toast-container" class="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
+
+  <script type="module">
+    import { createRouter } from './js/router.js';
+    import { renderNavbar  } from './js/components/navbar.js';
+
+    // Mount navbar
+    document.getElementById('navbar-slot').appendChild(renderNavbar('dashboard'));
+
+    // Register routes handled by this shell
+    createRouter({
+      '/':          () => import('./js/pages/dashboard.js'),
+      '/dashboard': () => import('./js/pages/dashboard.js'),
+      '/profile':   () => import('./js/pages/profile.js'),
+      '/settings':  () => import('./js/pages/settings.js'),
+    });
+  </script>
+</body>
+</html>
